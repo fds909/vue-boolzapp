@@ -52,16 +52,81 @@
                         <input type="text" name="search-chat" id="search-chat" placeholder="Cerca o inizia una nuova chat">
                     </div>
 
+                    <!-- Contacts' chats -->
                     <div class="contacts">
                         <ul>
-                            <li></li>
+                            <li class="contact">
+                                <!-- Contact pic and name -->
+                                <div class="contact-main">
+                                    <img src="/img/avatar_1.jpg" alt="Immagine Profilo">
+                                    <div class="contact-text">
+                                        <div class="name">Michele</div>
+                                        <div class="last-sent">Ultimo messaggio inviato</div>
+                                    </div>
+                                </div>
+
+                                <!-- Contact time -->
+                                <div class="contact-time">12:00</div>
+                            </li>
                         </ul>
                     </div>
                 </div>
 
                 <!-- Right-chat -->
                 <div class="right-chat">
+                    <!-- Chat header -->
+                    <div class="chat-header">
+                        <div class="header-left">
+                            <img src="img/avatar_1.jpg" alt="">
+                            <div class="header-text">
+                                <div class="name">Michele</div>
+                                <div class="last-online">Ultimo accesso oggi alle 12:00</div>
+                            </div>
+                        </div>
 
+                        <div class="header-right">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <i class="fa-solid fa-paperclip"></i>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </div>
+                    </div>
+
+                    <!-- Chat Main -->
+                    <div class="chat-main">
+                        <ul>
+                            <li>
+                                <div class="message sent">
+                                    <div class="message-text">Hai portato a spasso il cane?</div>
+                                    <div class="message-time"></div>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="message sent">
+                                    <div class="message-text">Ricordati di stendere i panni</div>
+                                    <div class="message-time"></div>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="message received">
+                                    <div class="message-text">Tutto fatto!</div>
+                                    <div class="message-time"></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Chat Footer -->
+                    <div class="chat-footer">
+                        <div class="smile">
+                            <i class="fa-regular fa-face-smile"></i>
+                        </div>
+                        <input type="text" name="chat-text" id="chat-text" placeholder="Scrivi un messaggio">
+                        <div class="voice">
+                            <i class="fa-solid fa-microphone"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
