@@ -1,0 +1,138 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bluesky : #99dafd;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+img {
+    max-width: 100%;
+}
+
+.background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(to bottom,
+        #009688 0,
+        #009688 15vh,
+        #dddbd1 15vh,
+        #d2dbdc 100vh
+    );
+}
+
+.wrapper {
+    height: 95%;
+    width: 80%;
+    background-color: #feffff;
+    border: 1px solid black;
+}
+
+/* Left contacts */
+.left-contacts {
+    width: calc(100% / 3);
+    height: 100%;
+
+    /* test */
+    background-color: white;
+    border-right: 1px solid black;
+}
+
+/* Profile */
+.profile {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #e9eaed;
+}
+
+.left-contacts .profile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.profile-pic {
+    display: flex;
+    align-items: center;
+}
+
+.profile-pic img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+.profile-options {
+    font-size: 18px;
+    color: #b0b1b3;
+}
+
+.profile-options i {
+    margin: 0 5px;
+}
+
+/* Notifications */
+.notifications {
+    display: flex;
+    align-items: center;
+    background-color: var(--bluesky);
+    padding: 10px 20px;
+}
+
+.notifications .bell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: #f2fbff;
+    color: var(--bluesky);
+}
+
+.notifications-text {
+    font-size: 13px;
+    font-weight: 500;
+    margin-left: 10px;
+}
+
+.notifications-text a {
+    color: #7c7c7c;
+    font-size: 12px;
+}
+
+/* Search chat */
+.search-chat {
+    display: flex;
+    background-color: #f9fafd;
+    padding: 5px;
+}
+
+.search-chat .search-glass {
+    text-align: center  ;
+    width: 15%;
+    color: #b6b9bd;
+}
+
+.search-chat input {
+    width: 85%;
+    border: 0;
+    background-color: white;
+}
+
+/* Contacts */
+.contacts ul {
+    list-style-type: none;
+}
