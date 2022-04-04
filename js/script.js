@@ -2,6 +2,10 @@ var app = new Vue (
     {
         el: "#root",
         data: {
+            profile: {
+                name: 'Sofia',
+                avatar: 'avatar_io.jpg'
+            },
             contacts: [
                 {
                     name: 'Michele',
