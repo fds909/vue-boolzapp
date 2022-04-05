@@ -96,26 +96,6 @@
                     <!-- Chat Main -->
                     <div class="chat-main">
                         <ul>
-                            <!-- <li>
-                                <div class="message sent">
-                                    <div class="message-text">Hai portato a spasso il cane?</div>
-                                    <div class="message-time">15:30</div>
-                                </div>
-                            </li>
-
-                            <li>
-                                <div class="message sent">
-                                    <div class="message-text">Ricordati di stendere i panni</div>
-                                    <div class="message-time">15:30</div>
-                                </div>
-                            </li>
-
-                            <li>
-                                <div class="message received">
-                                    <div class="message-text">Tutto fatto!</div>
-                                    <div class="message-time">16:15</div>
-                                </div>
-                            </li> -->
                             <li v-for="(message, index) in contacts[currentIndex].messages"
                                 :class="(message.status == 'sent') ? 'message sent' : 'message received'">
                                 <div class="message-text">{{ message.message }}</div>
@@ -130,7 +110,7 @@
                             <i class="fa-regular fa-face-smile"></i>
                         </div>
                         <input type="text" name="chat-text" id="chat-text" placeholder="Scrivi un messaggio"
-                                v-model="newMessage">
+                                v-model="newMessage" @keyup.enter="sendMessage">
                         <div class="voice">
                             <i class="fa-solid fa-microphone"></i>
                         </div>

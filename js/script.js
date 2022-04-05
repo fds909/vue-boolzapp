@@ -181,6 +181,52 @@ var app = new Vue (
             // Restituisce la data del messaggio in formato 'ora:minuto'
             getHourMinute: function(date) {
                 return date.substring(11, 16);
+            },
+            sendMessage: function() {
+
+                if (this.newMessage != '') {
+                    let currentDate = this.getCurrentDate();
+
+                    console.log(currentDate);
+
+                    let myMessage = {
+                        date: currentDate,
+                        message: this.newMessage,
+                        status: 'sent'
+                    }
+
+                    console.log(myMessage);
+                    this.contacts[this.currentIndex].messages.push(myMessage);
+
+                    // svuotamento della input text dopo l'invio del messaggio
+                    this.newMessage = '';
+
+                    // risposta automatica 'ok'
+                    setTimeout(this.autoReply, 1000);
+                }
+            },
+            getCurrentDate: function() {
+                // Ottenimento degli elementi della data formattati a 2 cifre
+                const day = ( (dayjs().get('date') < 10) ? '0' : '' ) + dayjs().get('date');
+                const month = ( (dayjs().get('month') < 10) ? '0' : '' ) + (dayjs().get('month') + 1);
+                const year = dayjs().get('year');
+                const hour = ( (dayjs().get('hour') < 10) ? '0' : '' ) + dayjs().get('hour');
+                const minute = ( (dayjs().get('minute') < 10) ? '0' : '' ) + dayjs().get('minute');
+                const second = ( (dayjs().get('second') < 10) ? '0' : '' ) + dayjs().get('second');
+
+                return `${day}/${month}/${year} ${hour}:${minute}:${second}`;
+            },
+            autoReply: function(replyText) {
+                // creazione della risposta
+                let currentDate = this.getCurrentDate();
+
+                let replyMessage = {
+                    date: currentDate,
+                    message: 'ok',
+                    status: 'received'
+                }
+
+                this.contacts[this.currentIndex].messages.push(replyMessage);
             }
         }
     }
