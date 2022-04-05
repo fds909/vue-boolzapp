@@ -22,7 +22,7 @@
                     <div class="profile">
                         <!-- Nome e avatar -->
                         <div class="profile-pic">
-                            <img src="./img/avatar_io.jpg" alt="My Avatar">
+                            <img :src="'./img/avatar' + profile.avatar + '.jpg'" alt="My Avatar">
                             <span class="profile-name">{{ profile.name }}</span>
                         </div>
                         <!-- Icone profilo -->
@@ -55,11 +55,12 @@
                     <!-- Contacts' chats -->
                     <div class="contacts">
                         <ul>
-                            <li class="contact" v-for="(contact, index) in contacts">
+                            <li class="contact" v-for="(contact, index) in contacts"
+                                @click="changeContact(index)" :class="(index == currentIndex) ? 'contact-selected' : ''">
                                 <!-- Contact pic and name -->
                                 <div class="contact-main">
                                     <img :src="'img/avatar' + contact.avatar + '.jpg'"
-                                          alt="Immagine Profilo">
+                                          :alt="'Immagine Profilo di ' + contact.name">
                                     <div class="contact-text">
                                         <div class="name">{{contact.name}}</div>
                                         <div class="last-sent">Ultimo messaggio inviato</div>
@@ -95,7 +96,7 @@
                     <!-- Chat Main -->
                     <div class="chat-main">
                         <ul>
-                            <li>
+                            <!-- <li>
                                 <div class="message sent">
                                     <div class="message-text">Hai portato a spasso il cane?</div>
                                     <div class="message-time">15:30</div>
@@ -114,6 +115,11 @@
                                     <div class="message-text">Tutto fatto!</div>
                                     <div class="message-time">16:15</div>
                                 </div>
+                            </li> -->
+                            <li v-for="(message, index) in contacts[currentIndex].messages"
+                                :class="(message.status == 'sent') ? 'message sent' : 'message received'">
+                                <div class="message-text">{{ message.message }}</div>
+                                <div class="message-time">{{ getHourMinute(message.date) }}</div>
                             </li>
                         </ul>
                     </div>
@@ -123,7 +129,8 @@
                         <div class="smile">
                             <i class="fa-regular fa-face-smile"></i>
                         </div>
-                        <input type="text" name="chat-text" id="chat-text" placeholder="Scrivi un messaggio">
+                        <input type="text" name="chat-text" id="chat-text" placeholder="Scrivi un messaggio"
+                                v-model="newMessage">
                         <div class="voice">
                             <i class="fa-solid fa-microphone"></i>
                         </div>
@@ -134,6 +141,8 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <!-- Import di day.js -->
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
 </body>
 </html>

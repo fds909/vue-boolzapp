@@ -4,7 +4,7 @@ var app = new Vue (
         data: {
             profile: {
                 name: 'Sofia',
-                avatar: 'avatar_io.jpg'
+                avatar: '_io'
             },
             contacts: [
                 {
@@ -168,11 +168,20 @@ var app = new Vue (
                         }
                     ],
                 }
-            ]
+            ],
+            currentIndex: 0,
+            newMessage: ''
             
         },
         methods: {
-            
+            // Cambia la chat selezionata in base al click sul contatto
+            changeContact: function(index) {
+                this.currentIndex = index;
+            },
+            // Restituisce la data del messaggio in formato 'ora:minuto'
+            getHourMinute: function(date) {
+                return date.substring(11, 16);
+            }
         }
     }
 )
