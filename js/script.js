@@ -172,6 +172,10 @@ var app = new Vue (
             currentIndex: 0,
             newMessage: '',
             searchContactName: '',
+            messageActive: {
+                index: false,
+                show: false
+            }
         },
         methods: {
             // Cambia la chat selezionata in base al click sul contatto
@@ -242,6 +246,18 @@ var app = new Vue (
             },
             deleteMessage: function(messageIndex) {
                 this.contacts[this.currentIndex].messages.splice(messageIndex, 1);
+            },
+            showDropdown: function(index) {
+                console.log("Indice del messaggio", index);
+
+                // Se l'indice è già stato impostato
+                if (this.messageActive.index != false && this.messageActive.index !== index) {
+                    this.messageActive.index = false;
+                    this.messageActive.show = false;
+                } else {
+                    this.messageActive.show = (this.messageActive.show) ? false : true;
+                    this.messageActive.index = index;
+                }
             }
         }
     }

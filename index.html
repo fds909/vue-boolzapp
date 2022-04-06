@@ -107,8 +107,8 @@
                                 :class="(message.status == 'sent') ? 'message sent' : 'message received'">
                                 <div class="message-text">{{ message.message }}</div>
                                 <div class="message-time">{{ getHourMinute(message.date) }}</div>
-                                <i class="fa-solid fa-angle-down"></i>
-                                <div class="message-dropdown" v-if=false>
+                                <i class="fa-solid fa-angle-down" @click="showDropdown(index)"></i>
+                                <div class="message-dropdown" v-if="messageActive.show && messageActive.index == index">
                                     <div>Message info</div>
                                     <div id="delete-message" @click="deleteMessage(index)">Delete message</div>
                                 </div>
