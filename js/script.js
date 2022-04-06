@@ -239,6 +239,9 @@ var app = new Vue (
                         contact.visible = false;
                     }
                 });
+            },
+            deleteMessage: function(messageIndex) {
+                this.contacts[this.currentIndex].messages.splice(messageIndex, 1);
             }
         }
     }

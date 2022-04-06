@@ -66,12 +66,15 @@
                                           :alt="'Immagine Profilo di ' + contact.name">
                                     <div class="contact-text">
                                         <div class="name">{{contact.name}}</div>
-                                        <div class="last-sent">Ultimo messaggio inviato</div>
+                                        <div class="last-sent">
+                                            <!-- ultimo messaggio inviato/ricevuto -->
+                                            {{ contact.messages[contact.messages.length - 1].message }}
+                                        </div>
                                     </div>
                                 </div>
 
                                 <!-- Contact time -->
-                                <div class="contact-time">12:00</div>
+                                <div class="contact-time">{{ getHourMinute(contact.messages[contact.messages.length - 1].date) }}</div>
                             </li>
                         </ul>
                     </div>
@@ -104,6 +107,11 @@
                                 :class="(message.status == 'sent') ? 'message sent' : 'message received'">
                                 <div class="message-text">{{ message.message }}</div>
                                 <div class="message-time">{{ getHourMinute(message.date) }}</div>
+                                <i class="fa-solid fa-angle-down"></i>
+                                <div class="message-dropdown" v-if=false>
+                                    <div>Message info</div>
+                                    <div id="delete-message" @click="deleteMessage(index)">Delete message</div>
+                                </div>
                             </li>
                         </ul>
                     </div>
