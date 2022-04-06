@@ -131,6 +131,10 @@ img {
     background-color: white;
 }
 
+.search-chat input::placeholder {
+    padding: 0 10px;
+}
+
 /* Contacts */
 .contacts {
     height: 70%;

@@ -170,8 +170,8 @@ var app = new Vue (
                 }
             ],
             currentIndex: 0,
-            newMessage: ''
-            
+            newMessage: '',
+            searchContactName: '',
         },
         methods: {
             // Cambia la chat selezionata in base al click sul contatto
@@ -205,17 +205,6 @@ var app = new Vue (
                     setTimeout(this.autoReply, 1000);
                 }
             },
-            getCurrentDate: function() {
-                // Ottenimento degli elementi della data formattati a 2 cifre
-                const day = ( (dayjs().get('date') < 10) ? '0' : '' ) + dayjs().get('date');
-                const month = ( (dayjs().get('month') < 10) ? '0' : '' ) + (dayjs().get('month') + 1);
-                const year = dayjs().get('year');
-                const hour = ( (dayjs().get('hour') < 10) ? '0' : '' ) + dayjs().get('hour');
-                const minute = ( (dayjs().get('minute') < 10) ? '0' : '' ) + dayjs().get('minute');
-                const second = ( (dayjs().get('second') < 10) ? '0' : '' ) + dayjs().get('second');
-
-                return `${day}/${month}/${year} ${hour}:${minute}:${second}`;
-            },
             autoReply: function(replyText) {
                 // creazione della risposta
                 let currentDate = this.getCurrentDate();
@@ -227,6 +216,29 @@ var app = new Vue (
                 }
 
                 this.contacts[this.currentIndex].messages.push(replyMessage);
+            },
+            filterContacts: function() {
+                console.log("active");
+            },
+            getCurrentDate: function() {
+                // Ottenimento degli elementi della data formattati a 2 cifre
+                const day = ( (dayjs().get('date') < 10) ? '0' : '' ) + dayjs().get('date');
+                const month = ( (dayjs().get('month') < 10) ? '0' : '' ) + (dayjs().get('month') + 1);
+                const year = dayjs().get('year');
+                const hour = ( (dayjs().get('hour') < 10) ? '0' : '' ) + dayjs().get('hour');
+                const minute = ( (dayjs().get('minute') < 10) ? '0' : '' ) + dayjs().get('minute');
+                const second = ( (dayjs().get('second') < 10) ? '0' : '' ) + dayjs().get('second');
+
+                return `${day}/${month}/${year} ${hour}:${minute}:${second}`;
+            },
+            filterContacts: function() {
+                this.contacts.forEach(contact => {
+                    if (contact.name.toLowerCase().includes(this.searchContactName.toLowerCase())) {
+                        contact.visible = true;
+                    } else {
+                        contact.visible = false;
+                    }
+                });
             }
         }
     }

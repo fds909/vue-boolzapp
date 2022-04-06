@@ -49,14 +49,17 @@
                         <a class="search-glass" href="#">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </a>
-                        <input type="text" name="search-chat" id="search-chat" placeholder="Cerca o inizia una nuova chat">
+                        <input type="text" name="search-chat" id="search-chat"
+                               placeholder="Cerca o inizia una nuova chat" v-model="searchContactName"
+                               @keyup="filterContacts">
                     </div>
 
                     <!-- Contacts' chats -->
                     <div class="contacts">
                         <ul>
                             <li class="contact" v-for="(contact, index) in contacts"
-                                @click="changeContact(index)" :class="(index == currentIndex) ? 'contact-selected' : ''">
+                                @click="changeContact(index)" :class="(index == currentIndex) ? 'contact-selected' : ''"
+                                v-if="contact.visible">
                                 <!-- Contact pic and name -->
                                 <div class="contact-main">
                                     <img :src="'img/avatar' + contact.avatar + '.jpg'"
