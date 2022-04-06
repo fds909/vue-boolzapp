@@ -82,9 +82,10 @@
                     <!-- Chat header -->
                     <div class="chat-header">
                         <div class="header-left">
-                            <img src="img/avatar_1.jpg" alt="">
+                            <img :src="`img/avatar${contacts[currentIndex].avatar}.jpg`"
+                                 :alt="`Avatar di ${contacts[currentIndex].name}`">
                             <div class="header-text">
-                                <div class="name">Michele</div>
+                                <div class="name">{{ contacts[currentIndex].name }}</div>
                                 <div class="last-online">Ultimo accesso oggi alle 12:00</div>
                             </div>
                         </div>
